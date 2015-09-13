@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitter Vanity Stats
 // @namespace    https://github.com/leggetter/twitter-vanity-stats-user-script
-// @version      0.1
+// @version      0.2
 // @description  Provides some basic Twitter stats based on time you joined twitter, followers, following and tweets.
 // @author       Phil Leggetter (@leggetter)
 // @match        https://twitter.com/*
@@ -18,11 +18,11 @@ function collectStats() {
 
     var daysOnTwitter = daydiff(joined, now);
 
-    var tweetCount = parseInt(jQuery('.ProfileNav-item--tweets .ProfileNav-stat[data-nav=tweets]').attr('title').replace(',', ''), 10);
+    var tweetCount = parseInt(jQuery('.ProfileNav-item--tweets .ProfileNav-stat[data-nav=tweets]').attr('title').replace(/,/g, ''), 10);
 
-    var followerCount = parseInt(jQuery('.ProfileNav-item--followers .ProfileNav-stat').attr('title').replace(',', ''), 10);
+    var followerCount = parseInt(jQuery('.ProfileNav-item--followers .ProfileNav-stat').attr('title').replace(/,/g, ''), 10);
 
-    var followingCount = parseInt(jQuery('.ProfileNav-item--following .ProfileNav-stat').attr('title').replace(',', ''), 10);
+    var followingCount = parseInt(jQuery('.ProfileNav-item--following .ProfileNav-stat').attr('title').replace(/,/g, ''), 10);
 
     var followersPerDay = (followerCount/daysOnTwitter);
     var followersPerTweet = (followerCount/tweetCount);
